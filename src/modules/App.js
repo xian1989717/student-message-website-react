@@ -44,16 +44,23 @@ class App extends React.Component {
           path: '/studentTask'
         }
       ],
-      selectMenuKey: ['schoolInformation']
+      selectMenuKey: []
     }
   }
-  clickMenu = (key) => {
+
+  handleClick = e => {
     this.setState({
-      selectMenuKey: key
+      selectMenuKey: e.key,
     })
   }
 
-  getKey = (hash) => {
+  setData = data => {
+    this.setState({
+      selectMenuKey: data
+    })
+  }
+
+  getKey = hash => {
     switch (hash) {
       case 'studentInformation':
         return ['studentInformation']
@@ -65,13 +72,33 @@ class App extends React.Component {
         return ['schoolInformation']
     }
   }
+
   componentDidMount () {
     const hash = window.location.hash.substring(2, window.location.hash.length)
-    this.clickMenu(this.getKey(hash))
+    switch (hash) {
+      case 'studentInformation':
+        this.setState({
+          selectMenuKey: ['studentInformation']
+        })
+        break;
+      case 'studentAchievement':
+        this.setState({
+          selectMenuKey: ['studentAchievement']
+        })
+        break;
+      case 'studentTask':
+        this.setState({
+          selectMenuKey: ['studentTask']
+        })
+        break;
+      default:
+        this.setState({
+          selectMenuKey: ['schoolInformation']
+        })
+    }
   }
 
   render () {
-
     const MenuItems = this.state.menuItems.map(i => {
       return <Menu.Item key={i.key}>
         <Link
@@ -93,7 +120,9 @@ class App extends React.Component {
             collapsible>
             <Menu
               mode="inline"
-              defaultSelectedKeys={this.state.selectMenuKey}>
+              selectedKeys={this.state.selectMenuKey}
+              defaultSelectedKeys={this.state.selectMenuKey}
+              onClick={this.handleClick}>
               {MenuItems}
             </Menu>
           </Sider>
