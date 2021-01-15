@@ -5,10 +5,7 @@ import {
   HashRouter
 } from 'react-router-dom'
 import { Layout, Menu } from 'antd'
-import {
-  UserOutlined,
-  VideoCameraOutlined
-} from '@ant-design/icons'
+
 import 'antd/dist/antd.css'
 
 import SchoolInformation from './school-information'
@@ -74,27 +71,22 @@ class App extends React.Component {
   }
 
   componentDidMount () {
-    const hash = window.location.hash.substring(2, window.location.hash.length)
+    const hash = window.location.hash.substring(
+      2,
+      window.location.hash.length
+    )
     switch (hash) {
       case 'studentInformation':
-        this.setState({
-          selectMenuKey: ['studentInformation']
-        })
+        this.setData(this.getKey('studentInformation'))
         break;
       case 'studentAchievement':
-        this.setState({
-          selectMenuKey: ['studentAchievement']
-        })
+        this.setData(this.getKey('studentAchievement'))
         break;
       case 'studentTask':
-        this.setState({
-          selectMenuKey: ['studentTask']
-        })
+        this.setData(this.getKey('studentTask'))
         break;
       default:
-        this.setState({
-          selectMenuKey: ['schoolInformation']
-        })
+        this.setData(this.getKey('schoolInformation'))
     }
   }
 
@@ -129,10 +121,19 @@ class App extends React.Component {
           <Layout
             className="site-layout"
           >
-            <Route path="/" component={SchoolInformation} exact />
-            <Route path="/studentInformation" component={StudentInformation} />
-            <Route path="/studentAchievement" component={StudentAchievement} />
-            <Route path="/studentTask" component={StudentTask} />
+            <Route
+              path="/"
+              component={SchoolInformation}
+              exact />
+            <Route
+              path="/studentInformation"
+              component={StudentInformation} />
+            <Route
+              path="/studentAchievement"
+              component={StudentAchievement} />
+            <Route
+              path="/studentTask"
+              component={StudentTask} />
           </Layout>
         </Layout>
       </HashRouter >
