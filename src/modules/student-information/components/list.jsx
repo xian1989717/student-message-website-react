@@ -12,11 +12,22 @@ const columns = [
     dataIndex: 'name',
     key: 'name',
     width: 100,
+    render: (text, record) => (
+      <Space size="middle">
+        <ToDetail name={record.name} />
+      </Space>
+    ),
   },
   {
     title: '年龄',
     dataIndex: 'age',
     key: 'age',
+    width: 80,
+  },
+  {
+    title: '学号',
+    dataIndex: 'studentNumber',
+    key: 'studentNumber',
     width: 80,
   },
   {
@@ -27,8 +38,8 @@ const columns = [
   },
   {
     title: '民族',
-    dataIndex: '',
-    key: '',
+    dataIndex: 'nation',
+    key: 'nation',
     width: 150,
   },
   {
@@ -60,17 +71,7 @@ const columns = [
     dataIndex: '',
     key: '',
     width: 200,
-  },
-  {
-    title: 'Action',
-    key: 'action',
-    width: 150,
-    render: (text, record) => (
-      <Space size="middle">
-        <ToDetail />
-      </Space>
-    ),
-  },
+  }
 ]
 
 const data = [
@@ -97,10 +98,10 @@ const data = [
   },
 ]
 
-function ToDetail () {
+function ToDetail (props) {
   let { url } = useRouteMatch()
   return (
-    <Link to={`${url}/detail`}>查看详情</Link>
+    <Link to={`${url}/detail`}>{props.name}</Link>
   )
 }
 export default class List extends React.Component {
