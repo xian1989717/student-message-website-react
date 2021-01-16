@@ -1,4 +1,8 @@
 import React from 'react'
+import {
+  Link,
+  useRouteMatch
+} from "react-router-dom";
 
 import { Table, Space } from 'antd'
 
@@ -63,8 +67,7 @@ const columns = [
     width: 150,
     render: (text, record) => (
       <Space size="middle">
-        <a href="">查看详情</a>
-        <a href="">编辑</a>
+        <ToDetail />
       </Space>
     ),
   },
@@ -94,6 +97,12 @@ const data = [
   },
 ]
 
+function ToDetail () {
+  let { url } = useRouteMatch()
+  return (
+    <Link to={`${url}/detail`}>查看详情</Link>
+  )
+}
 export default class List extends React.Component {
   render () {
     return (

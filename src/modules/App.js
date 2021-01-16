@@ -1,6 +1,7 @@
 import React from 'react'
 import {
   Route,
+  Switch,
   Link,
   HashRouter
 } from 'react-router-dom'
@@ -11,6 +12,7 @@ import 'antd/dist/antd.css'
 import SchoolInformation from './school-information'
 import StudentAchievement from './student-achievement'
 import StudentInformation from './student-information'
+import StudentInformationDetail from './student-information/components/detail'
 import StudentTask from './student-task'
 const { Header, Sider } = Layout
 
@@ -121,19 +123,25 @@ class App extends React.Component {
           <Layout
             className="site-layout"
           >
-            <Route
-              path="/"
-              component={SchoolInformation}
-              exact />
-            <Route
-              path="/studentInformation"
-              component={StudentInformation} />
-            <Route
-              path="/studentAchievement"
-              component={StudentAchievement} />
-            <Route
-              path="/studentTask"
-              component={StudentTask} />
+            <Switch>
+              <Route
+                path="/"
+                component={SchoolInformation}
+                exact />
+              <Route
+                path="/studentInformation/detail"
+                component={StudentInformationDetail} />
+              <Route
+                path="/studentInformation"
+                component={StudentInformation} />
+              <Route
+                path="/studentAchievement"
+                component={StudentAchievement} />
+              <Route
+                path="/studentTask"
+                component={StudentTask} />
+            </Switch>
+
           </Layout>
         </Layout>
       </HashRouter >
