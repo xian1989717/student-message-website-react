@@ -25,6 +25,12 @@ const columns = [
     width: 80,
   },
   {
+    title: '性别',
+    dataIndex: 'sex',
+    key: 'sex',
+    width: 80,
+  },
+  {
     title: '学号',
     dataIndex: 'studentNumber',
     key: 'studentNumber',
