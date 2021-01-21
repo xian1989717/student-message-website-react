@@ -79,8 +79,8 @@
       "react-app",
       "react-app/jest"
     ],
-    "rules":{
-      "jsx-a11y/anchor-is-valid":"off"
+    "rules": {
+      "jsx-a11y/anchor-is-valid": "off"
     }
   },
   "browserslist": {
@@ -148,11 +148,21 @@
     "resetMocks": true
   },
   "babel": {
+    "plugins": [
+      [
+        "@babel/plugin-proposal-decorators",
+        {
+          "legacy": true
+        }
+      ]
+    ],
     "presets": [
       "react-app"
     ]
   },
   "devDependencies": {
-    "antd": "^4.10.1"
+    "antd": "^4.10.1",
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0"
   }
 }

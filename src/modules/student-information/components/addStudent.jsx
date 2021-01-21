@@ -1,18 +1,19 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
 import {
   Modal,
   Form,
   Input,
   InputNumber,
-  Col,
-  Row,
   Button,
   DatePicker
 } from 'antd'
 
 import Selects from '../../common/select.jsx'
 import RadioGroup from '../../common/radio-group.jsx'
+
+import { addStudentAction } from '../../../store/actionCreator'
 
 const layout = {
   labelCol: {
@@ -22,8 +23,16 @@ const layout = {
     span: 16,
   }
 }
+const mapDispatch = dispatch => {
+  return {
+    addTeacher (teacher) {
+      dispatch(addStudentAction(teacher))
+    }
+  }
+}
 
-export default class AddStudent extends React.Component {
+@connect(null, mapDispatch)
+class AddStudent extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -166,3 +175,5 @@ export default class AddStudent extends React.Component {
     )
   }
 }
+
+export default AddStudent
