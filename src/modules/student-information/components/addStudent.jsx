@@ -14,6 +14,7 @@ import Selects from '../../common/select.jsx'
 import RadioGroup from '../../common/radio-group.jsx'
 
 import { addStudentAction } from '../../../store/actionCreator'
+import { nationList } from '../../common/baseData.js'
 
 const layout = {
   labelCol: {
@@ -36,7 +37,11 @@ class AddStudent extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      loading: false
+      loading: false,
+      formData: {
+        gander: 'male',
+        nation: null
+      }
     }
     this.formRef = React.createRef()
   }
@@ -56,6 +61,23 @@ class AddStudent extends React.Component {
   onFinishFailed = () => {
 
   }
+  // 选择性别
+  handleSelectGender = (data) => {
+    const formData = Object.assign(
+      this.state.formData,
+      { gander: data }
+    )
+    this.setState({ formData })
+  }
+  // 选择民族
+  handleSelectNation = (nation) => {
+    const formData = Object.assign(
+      this.state.formData,
+      { nation }
+    )
+    this.setState({ formData })
+  }
+
   render () {
     return (
       <>
@@ -95,15 +117,9 @@ class AddStudent extends React.Component {
 
             <Form.Item
               label="年龄"
-              name="age"
-              rules={[
-                {
-                  required: true,
-                  message: 'Please input your password!',
-                },
-              ]}
             >
               <InputNumber
+                disabled={true}
                 style={{ width: 150 }} />
             </Form.Item>
 
@@ -111,19 +127,20 @@ class AddStudent extends React.Component {
               label="性别">
               <Selects
                 width={100}
-                list={[]} />
+                list={[
+                  {
+                    value: 'male',
+                    data: '男性'
+                  },
+                  {
+                    value: 'female',
+                    data: '女性'
+                  }]}
+                select={this.handleSelectGender} />
             </Form.Item>
 
             <Form.Item
-              label="学号"
-              name="studentNumber"
-              rules={[
-                {
-                  required: true,
-                  message: 'Please input your username!',
-                },
-              ]}
-            >
+              label="学号">
               <Input />
             </Form.Item>
 
@@ -131,7 +148,7 @@ class AddStudent extends React.Component {
               label="出生日期"
               name="obtainPositionalTitlesTime" >
               <DatePicker
-                style={{ width: '50%' }} />
+                style={{ width: '280px' }} />
             </Form.Item>
 
             <Form.Item
@@ -139,7 +156,8 @@ class AddStudent extends React.Component {
               name="nation" >
               <Selects
                 width={150}
-                list={[]} />
+                list={nationList}
+                select={this.handleSelectNation} />
             </Form.Item>
 
             <Form.Item
