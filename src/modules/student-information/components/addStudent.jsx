@@ -26,8 +26,8 @@ const layout = {
 }
 const mapDispatch = dispatch => {
   return {
-    addTeacher (teacher) {
-      dispatch(addStudentAction(teacher))
+    addStudent (student) {
+      dispatch(addStudentAction(student))
     }
   }
 }
@@ -37,20 +37,32 @@ class AddStudent extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      loading: false,
       formData: {
         gander: 'male',
-        nation: null
+        nation: null,
+        age: null
       }
     }
     this.formRef = React.createRef()
   }
   handleOk = () => {
-    this.setState({ loading: true })
-    setTimeout(() => {
-      this.setState({ loading: false })
-      this.props.cancel(false)
-    }, 3000)
+    const form = this.formRef.current
+    const values = form.getFieldsValue([
+      'name',
+      'studentNo',
+      'dateOfBirth',
+      'nativePlace',
+      'permanentAddress',
+      'liveAdress',
+      'sosPerson',
+      'sosPersonPhone'
+    ])
+    const param = {
+      ...this.state.formData,
+      ...values
+    }
+    console.log(param)
+    this.props.addStudent()
   }
   handleCancel = () => {
     this.props.cancel(false)
@@ -78,6 +90,11 @@ class AddStudent extends React.Component {
     this.setState({ formData })
   }
 
+  // 选择出生日期
+  handleSelectData = (data) => {
+    console.log(data._d)
+  }
+
   render () {
     return (
       <>
@@ -96,7 +113,6 @@ class AddStudent extends React.Component {
             <Button
               key="submit"
               type="primary"
-              loading={this.loading}
               onClick={this.handleOk}>
               确定
             </Button>
@@ -110,21 +126,23 @@ class AddStudent extends React.Component {
             onFinishFailed={this.onFinishFailed}
           >
             <Form.Item
-              label="姓名">
+              label="姓名"
+              name="name">
               <Input
                 style={{ width: 150 }} />
             </Form.Item>
 
             <Form.Item
               label="年龄"
-            >
+              name="age">
               <InputNumber
                 disabled={true}
                 style={{ width: 150 }} />
             </Form.Item>
 
             <Form.Item
-              label="性别">
+              label="性别"
+              name="gender">
               <Selects
                 width={100}
                 list={[
@@ -140,15 +158,17 @@ class AddStudent extends React.Component {
             </Form.Item>
 
             <Form.Item
-              label="学号">
+              label="学号"
+              name="studentNo">
               <Input />
             </Form.Item>
 
             <Form.Item
               label="出生日期"
-              name="obtainPositionalTitlesTime" >
+              name="dateOfBirth" >
               <DatePicker
-                style={{ width: '280px' }} />
+                style={{ width: '280px' }}
+                onChange={this.handleSelectData} />
             </Form.Item>
 
             <Form.Item
@@ -167,23 +187,27 @@ class AddStudent extends React.Component {
             </Form.Item>
 
             <Form.Item
-              label="户籍地址">
+              label="户籍地址"
+              name="permanentAddress">
               <Input />
             </Form.Item>
 
             <Form.Item
-              label="居住地址">
+              label="居住地址"
+              name="liveAdress">
               <Input />
             </Form.Item>
 
             <Form.Item
-              label="紧急联络人">
+              label="紧急联络人"
+              name="sosPerson">
               <Input
                 style={{ width: '150px' }} />
             </Form.Item>
 
             <Form.Item
-              label="紧急联络人电话">
+              label="紧急联络人电话"
+              name="sosPersonPhone">
               <Input
                 style={{ width: '150px' }} />
             </Form.Item>
