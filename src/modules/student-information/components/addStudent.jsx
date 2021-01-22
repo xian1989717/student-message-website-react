@@ -11,7 +11,6 @@ import {
 } from 'antd'
 
 import Selects from '../../common/select.jsx'
-import RadioGroup from '../../common/radio-group.jsx'
 
 import { addStudentAction } from '../../../store/actionCreator'
 import { nationList } from '../../common/baseData.js'
