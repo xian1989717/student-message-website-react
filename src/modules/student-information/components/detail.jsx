@@ -44,29 +44,99 @@ class Detail extends React.Component {
           <Row
             style={{ height: '40px', lineHeight: '40px' }}>
             <Col span={6}>
-              <label>
+              <label style={{ margin: '0px 5px 0px 0px' }}>
                 姓名:
               </label>
               <span>
                 {student.name}
               </span>
             </Col>
-            <Col span={6}><label>年龄:<span>{student.age}</span></label></Col>
-            <Col span={6}><label>性别:<span>{student.sex}</span></label></Col>
-            <Col span={6}><label>学号:<span>{student.studentNumber}</span></label></Col>
+            <Col span={6}>
+              <label style={{ margin: '0px 5px 0px 0px' }}>
+                年龄:
+              </label>
+              <span>
+                {student.age}
+              </span>
+            </Col>
+            <Col span={6}>
+              <label style={{ margin: '0px 5px 0px 0px' }}>
+                性别:
+              </label>
+              <span>
+                {student.sex}
+              </span>
+            </Col>
+            <Col span={6}>
+              <label style={{ margin: '0px 5px 0px 0px' }}>
+                学号:
+              </label>
+              <span>
+                {student.studentNumber}
+              </span>
+            </Col>
           </Row>
           <Row
             style={{ height: '40px', lineHeight: '40px' }}>
-            <Col span={6}><label>出生日期:<span>{student.dateOfBirth}</span></label></Col>
-            <Col span={6}><label>民族:<span>{student.nation}</span></label></Col>
-            <Col span={6}><label>籍贯:<span>{student.nativePlace}</span></label></Col>
-            <Col span={6}><label>户籍地址:<span>{student.permanentAddress}</span></label></Col>
+            <Col span={6}>
+              <label style={{ margin: '0px 5px 0px 0px' }}>
+                出生日期:
+              </label>
+              <span>
+                {student.dateOfBirth}
+              </span>
+            </Col>
+            <Col span={6}>
+              <label style={{ margin: '0px 5px 0px 0px' }}>
+                民族:
+              </label>
+              <span>
+                {student.nation}
+              </span>
+            </Col>
+            <Col span={6}>
+              <label style={{ margin: '0px 5px 0px 0px' }}>
+                籍贯:
+              </label>
+              <span>
+                {student.nativePlace}
+              </span>
+            </Col>
+            <Col span={6}>
+              <label style={{ margin: '0px 5px 0px 0px' }}>
+                户籍地址:
+              </label>
+              <span>
+                {student.permanentAddress}
+              </span>
+            </Col>
           </Row>
           <Row
             style={{ height: '40px', lineHeight: '40px' }}>
-            <Col span={6}><label>居住地址:<span>{student.liveAdress}</span></label></Col>
-            <Col span={6}><label>紧急联络人:<span>{student.sosPerson}</span></label></Col>
-            <Col span={6}><label>紧急联络人电话:<span>{student.sosPersonPhone}</span></label></Col>
+            <Col span={6}>
+              <label style={{ margin: '0px 5px 0px 0px' }}>
+                居住地址:
+              </label>
+              <span>
+                {student.liveAdress}
+              </span>
+            </Col>
+            <Col span={6}>
+              <label style={{ margin: '0px 5px 0px 0px' }}>
+                紧急联络人:
+              </label>
+              <span>
+                {student.sosPerson}
+              </span>
+            </Col>
+            <Col span={6}>
+              <label style={{ margin: '0px 5px 0px 0px' }}>
+                紧急联络人电话:
+              </label>
+              <span>
+                {student.sosPersonPhone}
+              </span>
+            </Col>
           </Row>
         </div>
         <Tabs
