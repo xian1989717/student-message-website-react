@@ -1,19 +1,24 @@
 import React from 'react'
-import dayJs from 'dayjs'
-import { PageHeader, Breadcrumb, Row, Col, Tabs, List, Typography, Button } from 'antd'
+import { connect } from 'react-redux'
 
-import AddEvealuate from './addEvaluate'
+import { PageHeader, Breadcrumb, Row, Col, Tabs } from 'antd'
+
+import Remark from './remark'
+import Evealuate from './evealuate'
+
 const { TabPane } = Tabs
 
-const data = [
-  'Racing car sprays burning fuel into crowd.',
-  'Japanese princess to wed commoner.',
-  'Australian walks 100km after outback crash.',
-  'Man charged over missing wedding girl.',
-  'Los Angeles battles huge wildfires.',
-]
-
-export default class Detail extends React.Component {
+const mapState = state => {
+  return {
+    student: state.selectStudent
+  }
+}
+const mapDispatch = dispatch => {
+  return {
+  }
+}
+@connect(mapState, mapDispatch)
+class Detail extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -23,26 +28,9 @@ export default class Detail extends React.Component {
   }
   callback = (key) => {
   }
-  editEvaluate = () => {
-
-  }
-  addEvaluate = () => {
-    this.setState({
-      addVisable: true
-    })
-  }
-
-  cancelAddEvealuate = () => {
-    this.setState({
-      addVisable: false
-    })
-  }
-
-  addRemark = () => {
-
-  }
 
   render () {
+    const { student } = this.props
     return (
       <>
         <Breadcrumb
@@ -50,29 +38,35 @@ export default class Detail extends React.Component {
           <Breadcrumb.Item>Home</Breadcrumb.Item>
         </Breadcrumb>
         <PageHeader
-          title="详情信息" />
+          title={student.name} />
         <div
           style={{ padding: '8px 24px 40px 24px' }}>
           <Row
-            style={{ height: '40px' }}>
-            <Col span={6}><label>姓名:<span>张三</span></label></Col>
-            <Col span={6}><label>姓名:<span>张三</span></label></Col>
-            <Col span={6}><label>姓名:<span>张三</span></label></Col>
-            <Col span={6}><label>姓名:<span>张三</span></label></Col>
+            style={{ height: '40px', lineHeight: '40px' }}>
+            <Col span={6}>
+              <label>
+                姓名:
+              </label>
+              <span>
+                {student.name}
+              </span>
+            </Col>
+            <Col span={6}><label>年龄:<span>{student.age}</span></label></Col>
+            <Col span={6}><label>性别:<span>{student.sex}</span></label></Col>
+            <Col span={6}><label>学号:<span>{student.studentNumber}</span></label></Col>
           </Row>
           <Row
-            style={{ height: '40px' }}>
-            <Col span={6}><label>姓名:<span>张三</span></label></Col>
-            <Col span={6}><label>姓名:<span>张三</span></label></Col>
-            <Col span={6}><label>姓名:<span>张三</span></label></Col>
-            <Col span={6}><label>姓名:<span>张三</span></label></Col>
+            style={{ height: '40px', lineHeight: '40px' }}>
+            <Col span={6}><label>出生日期:<span>{student.dateOfBirth}</span></label></Col>
+            <Col span={6}><label>民族:<span>{student.nation}</span></label></Col>
+            <Col span={6}><label>籍贯:<span>{student.nativePlace}</span></label></Col>
+            <Col span={6}><label>户籍地址:<span>{student.permanentAddress}</span></label></Col>
           </Row>
           <Row
-            style={{ height: '40px' }}>
-            <Col span={6}><label>姓名:<span>张三</span></label></Col>
-            <Col span={6}><label>姓名:<span>张三</span></label></Col>
-            <Col span={6}><label>姓名:<span>张三</span></label></Col>
-            <Col span={6}><label>姓名:<span>张三</span></label></Col>
+            style={{ height: '40px', lineHeight: '40px' }}>
+            <Col span={6}><label>居住地址:<span>{student.liveAdress}</span></label></Col>
+            <Col span={6}><label>紧急联络人:<span>{student.sosPerson}</span></label></Col>
+            <Col span={6}><label>紧急联络人电话:<span>{student.sosPersonPhone}</span></label></Col>
           </Row>
         </div>
         <Tabs
@@ -80,54 +74,16 @@ export default class Detail extends React.Component {
           onChange={this.callback}
           style={{ padding: '8px 24px 0px 24px' }}
           tabBarStyle={{ borderBottom: '1px solid #ccc' }}>
-          <TabPane tab="学生评价" key="1">
-            <Button
-              type="primary"
-              style={{ margin: '0px 0px 16px 0px' }}
-              onClick={this.addEvaluate}>
-              新增评价
-            </Button>
-            <List
-              bordered
-              dataSource={data}
-              renderItem={item => (
-                <List.Item
-                  actions={[
-                    <a key="list-loadmore-edit">查看</a>,
-                    <a key="list-loadmore-more" onClick={this.editEvaluate}>编辑</a>
-                  ]}>
-                  <Typography.Text mark>[{dayJs(new Date().toDateString()).format('YYYY-MM-YY')}]</Typography.Text> {item}
-                </List.Item>
-              )}
-            />
-            <AddEvealuate
-              addVisable={this.state.addVisable}
-              cancel={this.cancelAddEvealuate}
-            />
+          <TabPane tab="评价" key="1">
+            <Evealuate />
           </TabPane>
-          <TabPane tab="学生备注" key="2">
-            <Button
-              type="primary"
-              style={{ margin: '0px 0px 16px 0px' }}
-              onClick={this.addRemark}>
-              新增备注
-            </Button>
-            <List
-              bordered
-              dataSource={data}
-              renderItem={item => (
-                <List.Item
-                  actions={[
-                    <a key="list-loadmore-edit">查看</a>,
-                    <a key="list-loadmore-more" onClick={this.editEvaluate}>编辑</a>
-                  ]}>
-                  <Typography.Text mark>[{dayJs(new Date().toDateString()).format('YYYY-MM-YY')}]</Typography.Text> {item}
-                </List.Item>
-              )}
-            />
+          <TabPane tab="备注" key="2">
+            <Remark />
           </TabPane>
         </Tabs>
       </>
     )
   }
 }
+
+export default Detail

@@ -2,9 +2,12 @@ import React from 'react'
 import {
   Link,
   useRouteMatch
-} from "react-router-dom";
+} from "react-router-dom"
 
 import { Table, Space } from 'antd'
+import { connect } from 'react-redux'
+
+import { activeStudentAction } from '../../../store/actionCreator'
 
 const columns = [
   {
@@ -14,7 +17,9 @@ const columns = [
     width: 100,
     render: (text, record) => (
       <Space size="middle">
-        <ToDetail name={record.name} />
+        <ToDetail
+          name={record.name}
+          student={record} />
       </Space>
     ),
   },
@@ -46,71 +51,73 @@ const columns = [
     title: '民族',
     dataIndex: 'nation',
     key: 'nation',
-    width: 150,
+    width: 100,
   },
   {
     title: '籍贯',
-    dataIndex: '',
-    key: '',
+    dataIndex: 'nativePlace',
+    key: 'nativePlace',
     width: 150,
   },
   {
     title: '户籍地址',
-    dataIndex: '',
-    key: '',
+    dataIndex: 'permanentAddress',
+    key: 'permanentAddress',
     width: 300,
   },
   {
     title: '居住地址',
-    dataIndex: '',
-    key: '',
+    dataIndex: 'liveAdress',
+    key: 'liveAdress',
     width: 300,
   },
   {
     title: '紧急联络人',
-    dataIndex: '',
-    key: '',
+    dataIndex: 'sosPerson',
+    key: 'sosPerson',
     width: 150,
   },
   {
     title: '紧急联络人电话',
-    dataIndex: '',
-    key: '',
+    dataIndex: 'sosPersonPhone',
+    key: 'sosPersonPhone',
     width: 200,
   }
 ]
 
-const data = [
-  {
-    key: '1',
-    name: '朱雨辰',
-    age: 32,
-    address: 'New York No. 1 Lake Park',
-    tags: ['nice', 'developer'],
-  },
-  {
-    key: '2',
-    name: '朱雨辰',
-    age: 42,
-    address: 'London No. 1 Lake Park',
-    tags: ['loser'],
-  },
-  {
-    key: '3',
-    name: '朱雨辰',
-    age: 32,
-    address: 'Sidney No. 1 Lake Park',
-    tags: ['cool', 'teacher'],
-  },
-]
-
 function ToDetail (props) {
   let { url } = useRouteMatch()
+
   return (
-    <Link to={`${url}/detail`}>{props.name}</Link>
+    <Link
+      to={`${url}/detail`}>
+      {props.name}
+    </Link>
   )
 }
-export default class List extends React.Component {
+const mapState = state => {
+  return {
+    list: state.list
+  }
+}
+const mapDispatch = dispatch => {
+  return {
+    activeStudent (student) {
+      dispatch(activeStudentAction(student))
+    }
+  }
+}
+@connect(mapState, mapDispatch)
+class List extends React.Component {
+
+  onRowSelect = (record, index) => {
+    return {
+      onClick: (e) => {
+        this.props.activeStudent(record)
+      }
+    }
+  }
+
   render () {
     return (
       <Table
@@ -118,7 +125,10 @@ export default class List extends React.Component {
         scroll={{ x: '100vw' }}
         style={{ padding: '0px 24px' }}
         columns={columns}
-        dataSource={data} />
+        dataSource={this.props.list}
+        onRow={this.onRowSelect} />
     )
   }
 }
+
+export default List

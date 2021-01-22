@@ -10,10 +10,10 @@ import {
   DatePicker
 } from 'antd'
 
-import Selects from '../../common/select.jsx'
+import Selects from '../../../common/select.jsx'
 
-import { addStudentAction } from '../../../store/actionCreator'
-import { nationList } from '../../common/baseData.js'
+import { addStudentAction } from '../../../../store/actionCreator'
+import { nationList } from '../../../common/baseData.js'
 
 const layout = {
   labelCol: {
@@ -60,8 +60,7 @@ class AddStudent extends React.Component {
       ...this.state.formData,
       ...values
     }
-    console.log(param)
-    this.props.addStudent()
+    this.props.addStudent(param)
   }
   handleCancel = () => {
     this.props.cancel(false)

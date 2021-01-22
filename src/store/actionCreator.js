@@ -8,6 +8,16 @@ const addStudentAction = data => {
   }
 }
 
+const activeStudentAction = data => {
+  return dispatch => {
+    dispatch({
+      type:'SET_SELECT_STUDENT',
+      data
+    })
+  }
+}
+
 export {
-  addStudentAction
+  addStudentAction,
+  activeStudentAction
 }

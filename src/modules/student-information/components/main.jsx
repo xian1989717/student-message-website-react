@@ -2,8 +2,8 @@ import React from 'react'
 
 import { PageHeader, Button } from 'antd'
 
-import List from './components/list'
-import AddStudent from './components/addStudent'
+import List from './list'
+import AddStudent from './dialog/addStudent'
 
 export default class Main extends React.Component {
   state = {
