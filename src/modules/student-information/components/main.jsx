@@ -27,15 +27,16 @@ export default class Main extends React.Component {
         <PageHeader
           title="学生信息"
           extra={[
-            <Button key="import">
+            <Button
+              key="import">
               导入
-              </Button>,
+            </Button>,
             <Button
               key="add"
               type="primary"
               onClick={this.handleAddClick}>
               新增
-            </Button>,
+            </Button>
           ]} />
         <List />
         <AddStudent

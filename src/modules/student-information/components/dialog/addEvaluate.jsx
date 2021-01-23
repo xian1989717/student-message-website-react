@@ -3,24 +3,45 @@ import { connect } from 'react-redux'
 
 import { Modal, Button, Input } from 'antd'
 
+import {
+  addStudentEvaluate
+} from '../../../../store/actionCreator'
+
 const { TextArea } = Input
 
-@connect(null, null)
+const mapDispatch = dispatch => {
+  return {
+    addEvaluate (data) {
+      dispatch(addStudentEvaluate(data))
+    }
+  }
+}
+
+@connect(null, mapDispatch)
 class AddEvaluate extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-
+      textAreaVal: null
     }
+    this.formRef = React.createRef()
   }
   handleCancel = () => {
     this.props.cancel(false)
   }
 
   handelOk = () => {
+    this.props.addEvaluate(this.state.textAreaVal)
     this.props.cancel(false)
   }
 
+  getTextAreaVal = (e) => {
+    setTimeout(() => {
+      this.setState({
+        textAreaVal: e.target.value
+      })
+    }, 100)
+  }
   render () {
     return (
       <>
@@ -48,7 +69,8 @@ class AddEvaluate extends React.Component {
           <TextArea
             showCount
             autoSize={{ minRows: 13, maxRows: 13 }}
-            maxLength={200} />
+            maxLength={200}
+            onChange={this.getTextAreaVal} />
         </Modal >
       </>
     )

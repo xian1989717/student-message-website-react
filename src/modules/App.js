@@ -53,45 +53,6 @@ class App extends React.Component {
     })
   }
 
-  setData = data => {
-    this.setState({
-      selectMenuKey: data
-    })
-  }
-
-  getKey = hash => {
-    switch (hash) {
-      case 'studentInformation':
-        return ['studentInformation']
-      case 'studentAchievement':
-        return ['studentAchievement']
-      case 'studentTask':
-        return ['studentTask']
-      default:
-        return ['schoolInformation']
-    }
-  }
-
-  componentDidMount () {
-    const hash = window.location.hash.substring(
-      2,
-      window.location.hash.length
-    )
-    switch (hash) {
-      case 'studentInformation':
-        this.setData(this.getKey('studentInformation'))
-        break;
-      case 'studentAchievement':
-        this.setData(this.getKey('studentAchievement'))
-        break;
-      case 'studentTask':
-        this.setData(this.getKey('studentTask'))
-        break;
-      default:
-        this.setData(this.getKey('schoolInformation'))
-    }
-  }
-
   render () {
     const MenuItems = this.state.menuItems.map(i => {
       return <Menu.Item key={i.key}>

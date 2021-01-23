@@ -55,6 +55,8 @@ function rducer (state = defaultState, action) {
       return Object.assign({}, state, {
         selectStudent: action.data
       })
+    case 'ADD_STUDENT_EVALUATE':
+      return
     default:
       return state
   }

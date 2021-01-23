@@ -42,6 +42,18 @@ const columns = [
     width: 80,
   },
   {
+    title: '年级',
+    dataIndex: 'grade',
+    key: 'grade',
+    width: 80,
+  },
+  {
+    title: '班级',
+    dataIndex: 'class',
+    key: 'class',
+    width: 80,
+  },
+  {
     title: '出生日期',
     dataIndex: 'dateOfBirth',
     key: 'dateOfBirth',
@@ -70,6 +82,12 @@ const columns = [
     dataIndex: 'liveAdress',
     key: 'liveAdress',
     width: 300,
+  },
+  {
+    title: '是否借读',
+    dataIndex: 'temporaryStudy',
+    key: 'temporaryStudy',
+    width: 50
   },
   {
     title: '紧急联络人',

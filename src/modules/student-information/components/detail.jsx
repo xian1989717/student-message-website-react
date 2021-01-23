@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { PageHeader, Breadcrumb, Row, Col, Tabs } from 'antd'
+import { PageHeader, Breadcrumb, Row, Col, Tabs, Button } from 'antd'
 
 import Remark from './remark'
 import Evealuate from './evealuate'
@@ -28,6 +28,13 @@ class Detail extends React.Component {
   }
   callback = (key) => {
   }
+  deleteStudent = () => {
+
+  }
+
+  editStudent = () => {
+
+  }
 
   render () {
     const { student } = this.props
@@ -38,7 +45,22 @@ class Detail extends React.Component {
           <Breadcrumb.Item>Home</Breadcrumb.Item>
         </Breadcrumb>
         <PageHeader
-          title={student.name} />
+          title={student.name}
+          extra={[
+            <Button
+              key="edit"
+              type="primary"
+              onClick={this.editStudent}>
+              编辑
+            </Button>,
+            <Button
+              key="delete"
+              type="primary"
+              danger
+              onClick={this.deleteStudent}>
+              删除
+            </Button>
+          ]} />
         <div
           style={{ padding: '8px 24px 40px 24px' }}>
           <Row
