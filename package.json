@@ -162,6 +162,7 @@
   },
   "devDependencies": {
     "antd": "^4.10.1",
+    "braft-editor": "^2.3.9",
     "dayjs": "^1.10.3",
     "react-redux": "^7.2.2",
     "redux": "^4.0.5",
