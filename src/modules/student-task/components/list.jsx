@@ -47,7 +47,8 @@ class List extends React.Component {
             height: '40px',
             lineHeight: '40px',
             padding: '0px 0px 0px 8px',
-            fontSize: '16px'
+            fontSize: '16px',
+            marginBottom:'8px'
           }}>
           年级列表
         </div>

@@ -1,6 +1,8 @@
 import React from 'react'
 
-import { Modal, Form, Button } from 'antd'
+import { Modal, Form, Button, DatePicker } from 'antd'
+
+import Select from '../../../common/select'
 
 const layout = {
   labelCol: {
@@ -15,10 +17,11 @@ class AddTask extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-
     }
     this.formRef = React.createRef()
   }
+
+
 
   onFinish = () => {
 
@@ -36,13 +39,16 @@ class AddTask extends React.Component {
 
   }
 
+  onDateChange = () => {
+
+  }
+
   render () {
     return (
       <>
         <Modal
           title="新增作业"
-          width={500}
-          bodyStyle={{ height: '350px' }}
+          bodyStyle={{ height: '200px' }}
           visible={this.props.visible}
           onCancel={this.handleCancel}
           footer={[
@@ -66,14 +72,25 @@ class AddTask extends React.Component {
             onFinish={this.onFinish}
             onFinishFailed={this.onFinishFailed}>
             <Form.Item
-              label="班级">
+              label="班级"
+              name="class">
+              <Select
+                list={[]} />
             </Form.Item>
             <Form.Item
-              label="学科">
+              label="学科"
+              name="subject">
+              <Select
+                list={[]}
+              />
             </Form.Item>
             <Form.Item
-              label="日期">
+              label="日期"
+              name="date">
+              <DatePicker
+                onChange={this.onDateChange} />
             </Form.Item>
+
           </Form>
         </Modal>
       </>

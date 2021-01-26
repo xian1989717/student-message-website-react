@@ -14,7 +14,7 @@ class Main extends React.Component {
         <div
           style={{
             display: 'flex',
-            height: '100%',
+            height: 'calc(100% - 72px)',
             padding: '0px 24px 16px 24px'
           }}>
           <div
