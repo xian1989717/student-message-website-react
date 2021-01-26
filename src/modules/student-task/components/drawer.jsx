@@ -8,7 +8,7 @@ class Drawers extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      placement: 'bottom',
+      placement: 'right',
       editorState: BraftEditor.createEditorState(null)
     }
   }
@@ -24,15 +24,15 @@ class Drawers extends React.Component {
   render () {
     return (
       <Drawer
-        title="Basic Drawer"
-        height={300}
+        title="添加作业"
+        width={800}
         placement={this.state.placement}
         onClose={this.onClose}
         visible={this.props.visible}
         key={this.state.placement}>
         <BraftEditor
           value={this.state.editorState}
-          contentStyle={{ height: 260 }}
+          controls={['undo','redo','font-size', 'font-family', 'text-color', 'text-align']}
           onChange={this.handleEditorChange} />
       </Drawer>
     )

@@ -160,6 +160,7 @@ class Task extends React.Component {
           </Button>
         </div>
         <Table
+          scroll={{ y: 'calc(100vh - 320px)' }}
           columns={columns}
           dataSource={data}
           onRow={this.onRowSelect} />
