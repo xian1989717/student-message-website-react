@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { PageHeader, Button } from 'antd'
+import { PageHeader } from 'antd'
 
 import List from './list'
 import Task from './task'
@@ -10,19 +10,7 @@ class Main extends React.Component {
     return (
       <>
         <PageHeader
-          title="学校作业"
-          extra={[
-            <Button
-              key="import">
-              导入
-            </Button>,
-            <Button
-              key="add"
-              type="primary"
-              onClick={this.handleAddClick}>
-              新增
-            </Button>
-          ]} />
+          title="学校作业" />
         <div
           style={{
             display: 'flex',
