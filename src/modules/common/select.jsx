@@ -19,6 +19,7 @@ class Selects extends React.Component {
     })
     return (
       <Select
+        placeholder={this.props.placeholder}
         style={{ width: this.props.width ? this.props.width : '100%' }}
         onChange={this.handleChange}>
         {list}
