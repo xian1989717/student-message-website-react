@@ -3,6 +3,7 @@ import React from 'react'
 import { PageHeader } from 'antd'
 
 import List from './list'
+import Achievement from './achievement'
 import Select from '../../common/select'
 class Main extends React.Component {
 
@@ -36,9 +37,10 @@ class Main extends React.Component {
               flexGrow: '1',
               borderTop: '1px solid #ccc',
               borderRight: '1px solid #ccc',
-              borderBottom: '1px solid #ccc'
+              borderBottom: '1px solid #ccc',
+              padding: '8px'
             }}>
-            {/* <Task></Task> */}
+            <Achievement></Achievement>
           </div>
         </div>
       </>

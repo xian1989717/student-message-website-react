@@ -42,6 +42,7 @@ class List extends React.Component {
   render () {
     return (
       <Table
+        scroll={{ y: 'calc(100vh - 210px)' }}
         columns={columns}
         dataSource={data}
         pagination={false} />

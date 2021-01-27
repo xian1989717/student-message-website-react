@@ -90,7 +90,6 @@ class AddTask extends React.Component {
               <DatePicker
                 onChange={this.onDateChange} />
             </Form.Item>
-
           </Form>
         </Modal>
       </>
