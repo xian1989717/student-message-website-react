@@ -14,7 +14,7 @@ class Main extends React.Component {
           title="学生成绩"
           extra={[
             <Select
-              width={200}
+              width={150}
               placeholder='请选择学级'
               list={[]}></Select>
           ]}
