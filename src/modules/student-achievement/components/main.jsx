@@ -16,7 +16,7 @@ class Main extends React.Component {
             <Select
               width={150}
               placeholder='请选择学级'
-              list={[]}></Select>
+              list={[]} />
           ]}
         />
         <div
