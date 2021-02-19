@@ -14,6 +14,7 @@ import StudentAchievement from './student-achievement'
 import StudentInformation from './student-information'
 import StudentInformationDetail from './student-information/components/detail'
 import StudentTask from './student-task'
+import ClassManagement from './class-management'
 const { Header, Sider } = Layout
 
 
@@ -28,6 +29,16 @@ class App extends React.Component {
           path: '/'
         },
         {
+          key: 'studentTask',
+          name: '学校作业',
+          path: '/studentTask'
+        },
+        {
+          key: 'classManagement',
+          name: '班级管理',
+          path: '/classManagement'
+        },
+        {
           key: 'studentInformation',
           name: '学生信息',
           path: '/studentInformation'
@@ -36,11 +47,6 @@ class App extends React.Component {
           key: 'studentAchievement',
           name: '学生成绩',
           path: '/studentAchievement'
-        },
-        {
-          key: 'studentTask',
-          name: '学校作业',
-          path: '/studentTask'
         }
       ],
       selectMenuKey: []
@@ -95,6 +101,9 @@ class App extends React.Component {
               <Route
                 path="/studentInformation"
                 component={StudentInformation} />
+              <Route
+                path="/classManagement"
+                component={ClassManagement} />
               <Route
                 path="/studentAchievement"
                 component={StudentAchievement} />
