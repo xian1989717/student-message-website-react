@@ -34,79 +34,37 @@ const data = [
   {
     key: '1',
     orderNumber: '1',
-    class: 'John Brown',
-    subject: 32,
-    date: new Date()
+    class: '三班',
+    subject: '语文',
+    date: new Date().toDateString()
   },
   {
     key: '2',
     orderNumber: '2',
-    class: 'Jim Green',
-    subject: 42,
-    date: new Date()
+    class: '四班',
+    subject: '数学',
+    date: new Date().toDateString()
   },
   {
     key: '3',
     orderNumber: '3',
-    class: 'Joe Black',
-    subject: 32,
-    date: new Date()
+    class: '五班',
+    subject: '数学',
+    date: new Date().toDateString()
   },
   {
     key: '4',
     orderNumber: '4',
-    class: 'Joe Black',
-    subject: 32,
-    date: new Date()
+    class: '二班',
+    subject: '语文',
+    date: new Date().toDateString()
   },
   {
     key: '5',
     orderNumber: '5',
-    class: 'Joe Black',
-    subject: 32,
-    date: new Date()
-  },
-  {
-    key: '6',
-    class: 'Joe Black',
-    subject: 32,
-    date: new Date()
-  },
-  {
-    key: '7',
-    class: 'Joe Black',
-    subject: 32,
-    date: new Date()
-  },
-  {
-    key: '8',
-    class: 'Joe Black',
-    subject: 32,
-    date: new Date()
-  },
-  {
-    key: '9',
-    class: 'Joe Black',
-    subject: 32,
-    date: new Date()
-  },
-  {
-    key: '10',
-    class: 'Joe Black',
-    subject: 32,
-    date: new Date()
-  },
-  {
-    key: '11',
-    class: 'Joe Black',
-    subject: 32,
-    date: new Date()
-  },
-  {
-    key: '12',
-    class: 'Joe Black',
-    subject: 32,
-    date: new Date()
+    class: '一班',
+    subject: '英语',
+    date: new Date().toDateString()
   }
 ]
 
